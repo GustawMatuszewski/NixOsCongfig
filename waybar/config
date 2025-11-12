@@ -1,7 +1,19 @@
 {
   "position": "top",
+  "modules-left": ["battery", "cpu", "memory", "temperature", "hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["network", "pulseaudio", "custom/power"],
 
-  "modules-left": ["cpu", "memory", "temperature", "hyprland/workspaces"],
+  "battery": {
+    "format": "{icon} {capacity}%  ",
+    "format-charging": " {capacity}%  ",
+    "format-discharging": "{icon} {capacity}%  ",
+    "format-full": " {capacity}%  ",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "interval": 10,
+    "tooltip": false,
+    "css": "font-family: 'JetBrainsMono Nerd Font';"
+  },
 
   "cpu": {
     "format": " {usage}%",
@@ -30,15 +42,10 @@
     }
   },
 
-  "modules-center": ["clock"],
-
-    "clock": {
-      "format": "{:%Y-%m-%d %H:%M:%S}",
-      "interval": 1
-    }, 
-
-
-  "modules-right": ["network", "pulseaudio"],
+  "clock": {
+    "format": "{:%Y-%m-%d %H:%M:%S}",
+    "interval": 1
+  },
 
   "network": {
     "format-wifi": "{ifname}: {ipaddr}",
@@ -53,5 +60,10 @@
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
     "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+  },
+
+  "custom/power": {
+    "format": "⏻",
+    "on-click": "systemctl poweroff"
   }
-}
+}   
